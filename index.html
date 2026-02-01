@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CryptoArmenia | Ներդրումային կազմակերպություն</title>
+  <style>
+    :root {
+      --bg: #05070f;
+      --card: rgba(255,255,255,0.06);
+      --accent: #7c7cff;
+      --accent2: #00e0a4;
+      --text: #f1f3ff;
+      --muted: #a3accf;
+      --glass: blur(12px);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', Arial, sans-serif;
+      background: radial-gradient(circle at top, #0b0f2a, #05070f 70%);
+      color: var(--text);
+    }
+
+    header {
+      padding: 24px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(14px);
+      background: rgba(5,7,15,0.6);
+      z-index: 10;
+    }
+
+    header h1 {
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0;
+      font-size: 26px;
+      letter-spacing: 1px;
+    }
+
+    nav a {
+      color: var(--text);
+      margin-left: 18px;
+      text-decoration: none;
+      font-size: 14px;
+      opacity: 0.85;
+    }
+
+    nav a:hover { opacity: 1; color: var(--accent2); }
+
+    .hero {
+      max-width: 1200px;
+      margin: auto;
+      padding: 100px 16px 80px;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 44px;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, #ffffff, #9aa4ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 760px;
+      margin: auto;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    .hero button {
+      margin-top: 36px;
+      padding: 14px 36px;
+      font-size: 16px;
+      border: none;
+      border-radius: 40px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      color: #000;
+      cursor: pointer;
+      box-shadow: 0 10px 40px rgba(124,124,255,0.35);
+    }
+
+    section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 80px 16px;
+    }
+
+    section h3 {
+      font-size: 32px;
+      margin-bottom: 48px;
+      text-align: center;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 28px;
+      border-radius: 22px;
+      backdrop-filter: blur(12px);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08), 0 20px 40px rgba(0,0,0,0.45);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: inset 0 0 0 1px rgba(124,124,255,0.4), 0 30px 60px rgba(0,0,0,0.6);
+    }
+
+    .card h4 {
+      margin-top: 0;
+      font-size: 18px;
+      color: var(--accent2);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card p {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .limited-info {
+      position: relative;
+      font-size: 14px;
+      color: #ffd166;
+      cursor: pointer;
+    }
+
+    .limited-info .tooltip {
+      position: absolute;
+      bottom: 130%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.9);
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 10px;
+      font-size: 12px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .limited-info:hover .tooltip { opacity: 1; }
+
+    .terms {
+      background: rgba(255,255,255,0.04);
+      border-radius: 24px;
+      padding: 40px;
+      line-height: 1.7;
+      color: var(--muted);
+      font-size: 14px;
+      backdrop-filter: blur(10px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 16px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      nav {
+        position: absolute;
+        top: 70px;
+        right: 16px;
+        background: rgba(5,7,15,0.95);
+        border-radius: 16px;
+        padding: 16px;
+        display: none;
+        flex-direction: column;
+      }
+      nav.show { display: flex; }
+      nav a { margin: 10px 0; font-size: 16px; }
+      .hero h2 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>CryptoArmenia</h1>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <nav id="nav">
+      <a href="#about" onclick="toggleMenu()">Մեր մասին</a>
+      <a href="#plans" onclick="toggleMenu()">Ներդրումներ</a>
+      <a href="#terms" onclick="toggleMenu()">Պայմաններ</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h2>Վստահելի ուղի դեպի կրիպտո ներդրումներ</h2>
+    <p>
+      CryptoArmenia-ն ներդրումային կազմակերպություն չէ, մեր նպատակն է ներկայացնել
+      կրիպտո ներդրումների տարբերակները, պայմանները և ռիսկերը՝ պարզ և հասկանալի ձևով։
+    </p>
+    <button onclick="scrollToPlans()">Դիտել ներդրումային տարբերակները</button>
+    <br/><br/>
+    <a href="https://t.me/crypto0armenia" target="_blank" style="display:inline-block;padding:12px 28px;border-radius:30px;background:#229ED9;color:#fff;text-decoration:none;font-size:15px;">Միանալ Telegram ալիքին</a>
+  </div>
+
+  <section id="about">
+    <h3>Մեր մասին</h3>
+    <div class="cards">
+      <div class="card">
+        <h4>Թափանցիկություն</h4>
+        <p>
+          Մենք ներկայացնում ենք ներդրումային բոլոր պայմանները առանց թաքնված կետերի,
+          որպեսզի ներդրողը հստակ հասկանա իր քայլերը։
+        </p>
+      </div>
+      <div class="card">
+        <h4>Կրթական մոտեցում</h4>
+        <p>
+          CryptoArmenia-ն օգնում է հասկանալ կրիպտո շուկայի մեխանիզմները՝ նախքան
+          որևէ ներդրում կատարելը։
+        </p>
+      </div>
+      <div class="card">
+        <h4>Ժամանակակից լուծումներ</h4>
+        <p>
+          Օգտագործում ենք նորագույն տեխնոլոգիաներ՝ ներդրումային տարբերակները
+          պարզ և հասանելի ներկայացնելու համար։
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="plans">
+    <h3>Ներդրումային տարբերակներ</h3>
+    <div class="cards">
+      <div class="card">
+        <h4>Տարբերակ 1</h4>
+        <p>Ներդրում՝ <strong>7 օր</strong><br/>Եկամտաբերություն՝ <strong>10%</strong></p>
+      </div>
+      <div class="card">
+        <h4>Տարբերակ 2</h4>
+        <p>Ներդրում՝ <strong>10 օր</strong><br/>Եկամտաբերություն՝ <strong>20%</strong></p>
+      </div>
+      <div class="card">
+        <h4>Տարբերակ 3</h4>
+        <p>Ներդրում՝ <strong>15 օր</strong><br/>Եկամտաբերություն՝ <strong>30%</strong></p>
+      </div>
+      <div class="card">
+        <h4>Տարբերակ 4</h4>
+        <p>Ներդրում՝ <strong>25 օր</strong><br/>Եկամտաբերություն՝ <strong>40%</strong></p>
+      </div>
+      <div class="card">
+        <h4>Տարբերակ 5</h4>
+        <p>Ներդրում՝ <strong>30 օր</strong><br/>Եկամտաբերություն՝ <strong>50%</strong></p>
+      </div>
+      <div class="card">
+        <h4>Տարբերակ 6 <span class="limited-info">ⓘ<span class="tooltip">Խիստ սահմանափակ տեղեր</span></span></h4>
+        <p>Ներդրում՝ <strong>20 օր</strong><br/>Եկամտաբերություն՝ <strong>100%</strong><br/><small style="color:#9aa4bf">Խիստ սահմանափակ տեղեր</small></p>
+      </div>
+      <div class="card">
+        <h4>Շաբաթավերջի հատուկ տարբերակ <span class="limited-info">ⓘ<span class="tooltip">Ակտիվ է միայն Կիրակի և Երկուշաբթի</span></span></h4>
+        <p>
+          Ակտիվ է միայն <strong>Կիրակի և Երկուշաբթի</strong><br/>
+          Ներդրում՝ <strong>$50 – $1000</strong><br/>
+          Սառեցման ժամկետ՝ <strong>15 / 20 / 30 օր</strong><br/>
+          Եկամտաբերություն՝ <strong>80% / 100% / 130%</strong>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="terms">
+    <h3>Պայմաններ և կանոններ</h3>
+    <div class="terms">
+      <p><strong>1․ Ընդհանուր դրույթներ</strong></p>
+      <p>
+        CryptoArmenia կայքը հանդիսանում է տեղեկատվական հարթակ, որտեղ ներկայացվում են
+        կրիպտո ներդրումների հնարավոր տարբերակները։ Կայքում ներկայացված տեղեկությունները
+        չեն հանդիսանում ֆինանսական խորհրդատվություն։
+      </p>
+
+      <p><strong>2․ Ներդրումային ռիսկեր</strong></p>
+      <p>
+        Կրիպտոարժույթների շուկան ունի փոփոխական բնույթ։ Ներդրում կատարելով՝ դուք
+        հաստատում եք, որ ֆինանսական կորուստ չեք կրում, սակայն եկամուտը
+        երաշխավորված չէ։
+      </p>
+
+      <p><strong>3․ Եկամտաբերության պայմաններ</strong></p>
+      <p>
+        Կայքում նշված տոկոսները ներկայացնում են հնարավոր եկամտաբերություն և կարող են
+        փոփոխվել շուկայի պայմաններից կախված։ Որոշ փաթեթներ ունեն սահմանափակ տեղեր կամ
+        սահմանափակ հասանելիություն։
+      </p>
+
+      <p><strong>4․ Limited և հատուկ առաջարկներ</strong></p>
+      <p>
+        Limited և հատուկ փաթեթները ունեն խիստ սահմանափակումներ՝ թե՛ ժամանակի, թե՛ տեղերի
+        քանակի առումով։ Այս առաջարկները կարող են փակվել առանց նախնական ծանուցման։
+      </p>
+
+      <p><strong>5․ Պատասխանատվություն</strong></p>
+      <p>
+        CryptoArmenia-ն չի հանդիսանում բանկ, ներդրումային հիմնադրամ կամ ապահովագրական
+        կազմակերպություն։ Բոլոր որոշումները կայացվում են ներդրողի կողմից՝ իր
+        պատասխանատվությամբ։
+      </p>
+
+      <p><strong>6․ Համաձայնություն</strong></p>
+      <p>
+        Օգտագործելով այս կայքը՝ դուք հաստատում եք, որ ծանոթացել եք պայմաններին և
+        ընդունում եք դրանք ամբողջությամբ։
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 CryptoArmenia • Բոլոր իրավունքները պաշտպանված են<br/>
+    <a href="https://t.me/crypto0armenia" target="_blank" style="color:#9aa4bf;text-decoration:none;">Telegram: @crypto0armenia</a>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('nav').classList.toggle('show');
+    }
+
+    function scrollToPlans() {
+      document.getElementById('plans').scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
