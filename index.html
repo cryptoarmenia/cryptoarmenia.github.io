@@ -52,6 +52,54 @@
       .hero h2{font-size:42px}
       .hero p{font-size:19px}
     }
+
+    .modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.75);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal.show { display: flex; }
+
+.modal-box {
+  background: #0b0f2a;
+  padding: 36px;
+  border-radius: 26px;
+  max-width: 420px;
+  text-align: center;
+  box-shadow: 0 40px 120px rgba(0,0,0,.8);
+}
+
+.modal-box h4 {
+  font-size: 24px;
+  margin-bottom: 14px;
+  color: var(--accent2);
+}
+
+.modal-box p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+.modal-box .btn {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.close {
+  margin-top: 16px;
+  display: inline-block;
+  font-size: 14px;
+  color: #aaa;
+  cursor: pointer;
+}
+
   </style>
 </head>
 <body>
@@ -88,17 +136,23 @@
 <section id="plans">
   <h3>Ներդրումային փաթեթներ</h3>
   <div class="cards">
-    <div class="plan"><h4>Փաթեթ 1</h4><p>Տևողություն՝ 7 օր</p><p>Եկամուտ՝ <span>10%</span></p></div>
-    <div class="plan"><h4>Փաթեթ 2</h4><p>Տևողություն՝ 10 օր</p><p>Եկամուտ՝ <span>20%</span></p></div>
-    <div class="plan"><h4>Փաթեթ 3</h4><p>Տևողություն՝ 15 օր</p><p>Եկամուտ՝ <span>30%</span></p></div>
-    <div class="plan"><h4>Փաթեթ 4</h4><p>Տևողություն՝ 25 օր</p><p>Եկամուտ՝ <span>40%</span></p></div>
-    <div class="plan"><h4>Փաթեթ 5</h4><p>Տևողություն՝ 30 օր</p><p>Եկամուտ՝ <span>50%</span></p></div>
+    <div class="plan"><h4>Փաթեթ 1</h4><p>Տևողություն՝ 7 օր</p><p>Եկամուտ՝ <span>10%</span> <button class="btn" onclick="openModal()">Ներդրում կատարել</button>
+</p></div>
+    <div class="plan"><h4>Փաթեթ 2</h4><p>Տևողություն՝ 10 օր</p><p>Եկամուտ՝ <span>20%</span> <button class="btn" onclick="openModal()">Ներդրում կատարել</button>
+</p></div>
+    <div class="plan"><h4>Փաթեթ 3</h4><p>Տևողություն՝ 15 օր</p><p>Եկամուտ՝ <span>30%</span><button class="btn" onclick="openModal()">Ներդրում կատարել</button>
+</p></div>
+    <div class="plan"><h4>Փաթեթ 4</h4><p>Տևողություն՝ 25 օր</p><p>Եկամուտ՝ <span>40%</span><button class="btn" onclick="openModal()">Ներդրում կատարել</button>
+</p></div>
+    <div class="plan"><h4>Փաթեթ 5</h4><p>Տևողություն՝ 30 օր</p><p>Եկամուտ՝ <span>50%</span><button class="btn" onclick="openModal()">Ներդրում կատարել</button>
+</p></div>
     <div class="plan has-tip"><h4>Փաթեթ 6 (Limited)</h4><p>Տևողություն՝ 20 օր</p><p>Եկամուտ՝ <span>100%</span></p><div class="badge">ⓘ Սահմանափակում<div class="tooltip">Խիստ սահմանափակ տեղեր</div></div></div>
     <div class="plan has-tip">
       <h4>Կայքի բացման հատուկ առաջարկ</h4>
       <p>Ներդրում՝ <strong>սկսած $25-ից</strong></p>
       <p>Տևողություն՝ <strong>15 օր</strong></p>
-      <p>Եկամուտ՝ <span>100%</span></p>
+      <p>Եկամուտ՝ <span>100%</span><button class="btn" onclick="openModal()">Ներդրում կատարել</button>
+</p>
       <div class="badge">ⓘ Սահմանափակ
         <div class="tooltip">Գործում է միայն կայքի բացումից հետո 48 ժամ</div>
       </div>
@@ -156,6 +210,32 @@
   <a href="https://t.me/crypto0armenia" target="_blank" style="color:#9aa4bf;text-decoration:none">Telegram: @crypto0armenia</a>
 </footer>
 
+
+
+
+<div class="modal" id="investModal">
+  <div class="modal-box">
+    <h4>Ներդրում կատարելու համար</h4>
+    <p>
+      Ներդրում կատարելու համար անհրաժեշտ է այցելել մեր Telegram ալիքը
+      և կապվել ադմինիստրատորի հետ։
+    </p>
+    <a class="btn" target="_blank" href="https://t.me/crypto0armenia">
+      Անցնել Telegram
+    </a>
+    <div class="close" onclick="closeModal()">Փակել</div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
 <script>
   function toggleMenu(){document.getElementById('nav').classList.toggle('show')}
 
@@ -177,6 +257,22 @@
   }
   updateCountdown();
   setInterval(updateCountdown,1000);
+
+
+
+
+
+
+
+
+  function openModal(){
+    document.getElementById('investModal').classList.add('show');
+  }
+  function closeModal(){
+    document.getElementById('investModal').classList.remove('show');
+  }
+
+
 </script>
 </body>
 </html>
