@@ -234,25 +234,7 @@
 <script>
   function toggleMenu(){document.getElementById('nav').classList.toggle('show')}
 
-  // 48 ժամանոց countdown կայքի բացումից
-  const start = localStorage.getItem('siteStart') || Date.now();
-  localStorage.setItem('siteStart', start);
-
-  const countdownEl = document.getElementById('countdown');
-  const end = Number(start) + 48 * 60 * 60 * 1000;
-
-  function updateCountdown(){
-    const now = Date.now();
-    const diff = end - now;
-    if(diff <= 0){ countdownEl.innerHTML = 'Հատուկ առաջարկը ավարտվել է'; return; }
-    const h = Math.floor(diff / 1000 / 60 / 60);
-    const m = Math.floor((diff / 1000 / 60) % 60);
-    const s = Math.floor((diff / 1000) % 60);
-    countdownEl.innerHTML = `Կայքի բացման հատուկ առաջարկը կավարտվի՝ ${h}ժ ${m}ր ${s}վ`;
-  }
-  updateCountdown();
-  setInterval(updateCountdown,1000);
-
+  
 
 
 
@@ -271,6 +253,7 @@
 </script>
 </body>
 </html>
+
 
 
 
