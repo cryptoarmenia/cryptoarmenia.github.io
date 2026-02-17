@@ -6,6 +6,47 @@
     <title>CryptoArmenia  | Կրիպտո Հայաստան</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+
+        /* Footer-ի կառուցվածքի և էֆեկտների ոճերը */
+footer {
+    padding: 60px 8% 30px;
+    background: #040508;
+    border-top: 1px solid var(--glass-border);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    text-align: left;
+    margin-bottom: 40px;
+}
+
+.footer-section h4 {
+    color: var(--primary);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+.footer-section ul { list-style: none; }
+.footer-section ul li { margin-bottom: 12px; }
+
+.footer-section ul li a {
+    color: #888;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-section ul li a:hover {
+    color: var(--primary);
+    padding-left: 5px; /* Մկնիկը պահելիս հղումը շարժվում է */
+}
         :root {
             --primary: #00f2ff;
             --secondary: #7000ff;
@@ -517,13 +558,32 @@
     </div>
 
     <footer>
-        <div class="logo">CryptoArmenia / Կրիպտո Հայաստան</div>
-        <div class="socials">
-            <a href="https://instagram.com/crypto0armenia" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://t.me/crypto0armenia" target="_blank"><i class="fab fa-telegram"></i></a>
-            <a href="https://tiktok.com/@crypto0armenia" target="_blank"><i class="fab fa-tiktok"></i></a>
+    <div class="footer-content">
+        <div class="footer-section">
+            <div class="logo" style="margin-bottom: 15px;">CryptoArmenia</div>
+            <p style="color: #666; font-size: 13px; line-height: 1.6;">Ապագայի ներդրումային հարթակ: Մենք տրամադրում ենք լավագույն գործիքները կրիպտոաշխարհում հաջողության հասնելու համար:</p>
         </div>
-        <p style="color: #666; font-size: 14px;">&copy; 2026 Բոլոր իրավունքները պաշտպանված են</p>
+
+        <div class="footer-section">
+            <h4>Գործիքներ</h4>
+            <ul>
+                <li><a href="/calculator"><i class="fas fa-calculator"></i> Հաշվիչ</a></li>
+                <li><a href="/market"><i class="fas fa-chart-bar"></i> Շուկայի Live գրաֆիկ</a></li>
+                <li><a href="/news"><i class="fas fa-rss"></i> Նորություններ</a></li>
+                <li><a href="/payouts"><i class="fa-solid fa-money-bill"></i> Մեր Շահույթը</a></li>
+                <li><a href="/invest"><i class="fa-solid fa-person"></i> Ներդրողներ</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h4>Աջակցություն</h4>
+            <ul>
+                <li><a href="#packages">Ներդրումային փաթեթներ</a></li>
+                <li><a href="#terms">Կանոնակարգ</a></li>
+                <li><a href="https://t.me/crypto0armenia" target="_blank">Հետադարձ կապ (Telegram)</a></li>
+            </ul>
+        </div>
+    </div>
     </footer>
 
     <div id="payModal" class="modal">
@@ -622,6 +682,5 @@
     </script>
 </body>
 </html>
-
 
 
